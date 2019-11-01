@@ -5,75 +5,45 @@ namespace Modules\Product\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Payment\Http\Requests\PaymentRequest;
+use Modules\Payment\Repositories\PaymentRepository;
+use Modules\Payment\Entities\Payment;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Response
-     */
-    public function index()
-    {
+
+    public function index(Request $request){
         return view('product::index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
+
     public function create()
     {
         return view('product::create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        //
+
+    public function store(ProductRequest $request){
+        ProductRepository::store($request->all());
+        return redirect()->route('products.index')->with('success', 'Produto cadastrado.');
     }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        return view('product::show');
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Response
-     */
-    public function edit($id)
+    public function edit(Request $request, Product $product)
     {
         return view('product::edit');
     }
 
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+
+    public function update(ProductRequest $request, Product $product){
+        ProductRepository::update($product, $request->all());
+        return redirect()->route('products.edit', $product->id)->with('success', 'Produto atualizado.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
+
+    public function destroy(Request $request, Product $product){
+        ProductRepository::destroy($product);
+        return back()->with('success', 'Produto deletado.');
     }
+
 }
