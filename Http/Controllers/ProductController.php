@@ -5,9 +5,10 @@ namespace Modules\Product\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Modules\Payment\Http\Requests\PaymentRequest;
-use Modules\Payment\Repositories\PaymentRepository;
-use Modules\Payment\Entities\Payment;
+use Modules\Product\Http\Requests\ProductRequest;
+use Modules\Product\Repositories\ProductRepository;
+use Modules\Product\Entities\Product;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -26,6 +27,11 @@ class ProductController extends Controller
     public function store(ProductRequest $request){
         ProductRepository::store($request->all());
         return redirect()->route('products.index')->with('success', 'Produto cadastrado.');
+    }
+
+
+    public function storeImage(Request $request, Product $product){
+        Storage::disk('public')->putFileAs('produtos', $request->file, $product->sku.'.jpg');
     }
 
 

@@ -20,11 +20,12 @@ class CreateProductsTable extends Migration
             $table->string('barcode')->unique();
 
             $table->string('description');
+            $table->decimal('price', 10, 2);
 
             $table->integer('min_qty')->default(1);
             $table->integer('multiple')->default(1);
 
-            $table->unsignedBigInteger('product_category_id')->unique();
+            $table->unsignedBigInteger('product_category_id');
 
             $table->timestamps();
 

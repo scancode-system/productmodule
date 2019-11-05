@@ -4,10 +4,10 @@
 
 <div class="card">
 	<div class="card-header">
-		<i class="fa fa-edit"></i> Produto #{{ '1' }}
+		<i class="fa fa-edit"></i> Produto #{{ $product->id }}
 	</div>
 	<div class="card-body">
-		@include('dashboard::products.forms.form')
+		@include('product::forms.form')
 	</div>
 </div>
 

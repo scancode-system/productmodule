@@ -7,7 +7,7 @@
 		<i class="fa fa-plus-square-o"></i> Novo Produto
 	</div>
 	<div class="card-body">
-		@include('dashboard::products.forms.form')
+		@include('product::forms.form')
 	</div>
 </div>
 
