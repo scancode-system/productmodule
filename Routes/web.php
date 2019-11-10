@@ -26,4 +26,4 @@ Route::prefix('products')->middleware('auth')->group(function() {
 
 Route::prefix('product_categories')->middleware('auth')->group(function() {
 	Route::post('', 'ProductCategoryController@store')->name('product_categories.store');
-});
+}); 
