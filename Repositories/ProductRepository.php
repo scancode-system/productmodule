@@ -28,6 +28,10 @@ class ProductRepository
 	public static function destroy($product){
 		$product->delete();
 	}
- 
+
+	public static function toSelect($value, $description){
+		return Product::pluck($description, $value);
+	}
+
 
 }

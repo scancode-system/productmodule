@@ -59,7 +59,7 @@
 @include('product::modals.modal_create_product_categories')
 
 
-
+@if(isset($product))
 @push('styles')
 {{ Html::style('modules/dashboard/dropzone/dropzone.css') }}
 @endpush
@@ -83,3 +83,4 @@
 </script>
 
 @endpush
+@endif

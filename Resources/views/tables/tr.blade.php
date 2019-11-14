@@ -8,6 +8,7 @@
 		@currency($product->price)
 	</td>
 	<td class="align-middle">{{ $product->product_category->description }}</td>
+		<td class="align-middle">{{ $product->min_qty }}</td>
 	<td class="text-right align-middle">
 		<div class="btn-group" role="group" aria-label="Basic example">
 			<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#products_view_{{ $product->id }}"><i class="fa fa-eye"></i></button>
