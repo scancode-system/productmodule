@@ -2,7 +2,7 @@
 
 namespace Modules\Product\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider; 
 use Illuminate\Database\Eloquent\Factory;
 
 class ProductServiceProvider extends ServiceProvider
@@ -15,6 +15,7 @@ class ProductServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerViews();
+        $this->registerFactories();
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
@@ -48,6 +49,20 @@ class ProductServiceProvider extends ServiceProvider
             return $path . '/modules/product';
         }, \Config::get('view.paths')), [$sourcePath]), 'product');
     }
+
+
+    
+        /**
+     * Register an additional directory of factories.
+     *
+     * @return void
+     */
+        public function registerFactories()
+        {
+            if (! app()->environment('production') && $this->app->runningInConsole()) {
+                app(Factory::class)->load(__DIR__ . '/../Database/factories');
+            }
+        }
 
     /**
 

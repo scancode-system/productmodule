@@ -7,6 +7,9 @@ use Modules\Product\Entities\Product;
 class ProductRepository
 {
 
+	public static function loadAll(){
+		return Product::all();
+	}
 
 	public static function list($search = '', $limit = 10){
 		$products =  Product::where('description', 'like', '%'.$search.'%')->orWhere('sku', 'like', '%'.$search.'%')->paginate($limit);
@@ -32,6 +35,5 @@ class ProductRepository
 	public static function toSelect($value, $description){
 		return Product::pluck($description, $value);
 	}
-
 
 }
