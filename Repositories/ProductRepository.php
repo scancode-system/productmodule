@@ -11,6 +11,12 @@ class ProductRepository
 		return Product::all();
 	}
 
+	public static function loadPaginate($items_per_page = 10){
+		$products =  Product::paginate($items_per_page);
+		$products->appends(request()->query());
+		return $products;
+	}
+
 	public static function list($search = '', $limit = 10){
 		$products =  Product::where('description', 'like', '%'.$search.'%')->orWhere('sku', 'like', '%'.$search.'%')->paginate($limit);
 		$products->appends(request()->query());
