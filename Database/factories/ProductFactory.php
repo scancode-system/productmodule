@@ -13,6 +13,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'description' => $faker->productName,
         'price' => $faker->randomFloat(2, 1, 2000),
         'min_qty' => $faker->numberBetween(1,5),
+        'discount_limit' => $faker->randomFloat(2, 0, 100),
         'multiple' => $faker->numberBetween(1,5),
         'product_category_id' => $faker->numberBetween(1,10),
     ];

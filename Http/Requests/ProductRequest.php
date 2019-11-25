@@ -20,6 +20,7 @@ class ProductRequest extends FormRequest
             'description' => 'required|string|max:255',
             'price' => 'required|numeric|min:0.01|regex:/^\d+(\.\d{1,2})?$/',
             'min_qty' => 'integer|min:1',
+            'discount_limit' => 'numeric|between:0,100|regex:/^\d+(\.\d{1,2})?$/',
             'multiple' => 'integer|min:1',
             'product_category_id' => 'integer',
         ];

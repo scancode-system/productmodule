@@ -23,7 +23,7 @@
 		</div>
 		<div class="form-group">
 			{{ Form::label('price', 'Preço') }}
-			{{ Form::number('price', old('price'), ['class' => 'form-control', 'step' => '0.1']) }}
+			{{ Form::number('price', old('price'), ['class' => 'form-control', 'step' => '0.01']) }}
 		</div>
 		<div class="form-group">
 			{{ Form::label('product_category_id', 'Categoria') }}
@@ -39,6 +39,10 @@
 		<div class="form-group">
 			{{ Form::label('min_qty', 'Quantidade Mínima') }}
 			{{ Form::number('min_qty', old('min_qty'), ['class' => 'form-control']) }}
+		</div>
+		<div class="form-group">
+			{{ Form::label('discount_limit', 'Limite de Desconto (%)') }}
+			{{ Form::number('discount_limit', old('discount_limit'), ['class' => 'form-control', 'step' => '0.01']) }}
 		</div>
 		<div class="form-group">
 			{{ Form::label('multiple', 'Múltiplo') }}

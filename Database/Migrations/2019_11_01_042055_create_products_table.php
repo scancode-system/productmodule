@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->decimal('price', 10, 2);
 
             $table->integer('min_qty')->default(1);
+            $table->decimal('discount_limit', 10, 2)->default(100);
             $table->integer('multiple')->default(1);
 
             $table->unsignedBigInteger('product_category_id');

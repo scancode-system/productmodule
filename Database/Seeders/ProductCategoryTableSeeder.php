@@ -18,7 +18,7 @@ class ProductCategoryTableSeeder extends Seeder
     {
         Model::unguard();
         try{
-            factory(ProductCategory::class, 10)->create();
+            factory(ProductCategory::class, 15)->create();
         } catch(Exception $e){
             echo "\n".$e->getMessage()."\n\n";
         }

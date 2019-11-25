@@ -28,6 +28,10 @@ Produto #{{ $product->id }}
 	<div class="col-md-4">{{ $product->min_qty }}</div>
 </div>
 <div class="row justify-content-center mb-1">
+	<div class="col-md-4"><strong>Limite de desconto: </strong></div>
+	<div class="col-md-4">@percentage($product->discount_limit)</div>
+</div>
+<div class="row justify-content-center mb-1">
 	<div class="col-md-4"><strong>Multiplo: </strong></div>
 	<div class="col-md-4">{{ $product->multiple }}</div>
 </div>
