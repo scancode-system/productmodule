@@ -9,7 +9,7 @@ use Modules\Product\Http\Requests\ProductCategoryRequest;
 use Modules\Product\Repositories\ProductCategoryRepository;
 
 
-class ProductCategoryController extends Controller
+class ProductCategoryController extends Controller 
 {
 
     /**

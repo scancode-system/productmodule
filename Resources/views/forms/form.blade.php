@@ -10,7 +10,7 @@
 <div class="row">
 	<div class="col">
 		<div class="form-group">
-			{{ Form::label('sku', 'Referência') }}
+			{{ Form::label('sku', 'Referência') }} 
 			{{ Form::text('sku', old('sku'), ['class' => 'form-control']) }}
 		</div>
 		<div class="form-group">
