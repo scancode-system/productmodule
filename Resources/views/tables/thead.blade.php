@@ -5,7 +5,7 @@
 		<th>Descrição</th>
 		<th>Preço</th>
 		<th>Categoria</th>
-		<th>Mínimo</th>
+		@loader(['loader_path' => 'products.thead'])
 		<th class="text-right">Ações</th>
 	</tr>
 </thead>

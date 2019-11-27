@@ -39,6 +39,6 @@ Produto #{{ $product->id }}
 	<div class="col-md-4"><strong>Código de Barras: </strong></div>
 	<div class="col-md-4">{{ $product->barcode }}</div>
 </div>
-
+@loader(['loader_path' => 'products.view'])
 
 @endmodal_view
