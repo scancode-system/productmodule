@@ -5,7 +5,7 @@ Produto #{{ $product->id }}
 @endslot
 
 <div class="d-flex justify-content-center mb-3">
-	<img src="{{ url($product->image) }}" alt="..." class="img-thumbnail w-50">
+	<img src="{{ url($product->image) }}" alt="..." class="img-thumbnail" style="width: 223px; height: 180px">
 </div>
 <div class="row justify-content-center mb-1">
 	<div class="col-md-4"><strong>Referência: </strong></div>
