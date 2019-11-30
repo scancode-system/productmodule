@@ -6,8 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Modules\Product\Entities\ProductCategory;
 
+use Rocky\Eloquent\HasDynamicRelation;
+
 class Product extends Model
 {
+	use HasDynamicRelation;
+	
 	protected $guarded = [];
 
 	protected $appends = ['image'];
