@@ -8,6 +8,7 @@
 	</div>
 	<div class="card-body">
 		@include('product::forms.form')
+		@loader(['loader_path' => 'products.create'])
 	</div>
 </div>
 

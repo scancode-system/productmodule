@@ -33,7 +33,8 @@
 				</span>
 				{{ Form::select('product_category_id', $select_product_categories, old('product_category_id'), ['class' => 'form-control', 'placeholder' => 'Selecione uma categoria']) }}
 			</div>
-		</div>	
+		</div>
+		@loader(['loader_path' => 'products.forms.left_column'])
 	</div>
 	<div class="col">
 		<div class="form-group">
@@ -48,6 +49,7 @@
 			{{ Form::label('multiple', 'Múltiplo') }}
 			{{ Form::number('multiple', old('multiple'), ['class' => 'form-control']) }}
 		</div>
+		@loader(['loader_path' => 'products.forms.right_column'])
 		@if(isset($product))
 		<div class="d-flex flex-column flex-md-row">
 			<img src="{{ url($product->image) }}" alt="..." class="img-thumbnail mr-md-4 mb-3 mb-md-0" style="height: 200px;">

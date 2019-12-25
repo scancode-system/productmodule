@@ -27,10 +27,11 @@ class CreateProductsTable extends Migration
             $table->integer('multiple')->default(1);
 
             $table->unsignedBigInteger('product_category_id');
+            $table->foreign('product_category_id')->references('id')->on('product_categories')->onDelete('restrict')->onUpdate('restrict');
 
             $table->timestamps();
 
-            $table->foreign('product_category_id')->references('id')->on('product_categories')->onDelete('restrict')->onUpdate('restrict');
+
         });
     }
 
