@@ -23,6 +23,12 @@ class ProductRepository
 		return $products;
 	}
 
+	public static function productByUniqueKeys($barcode)
+	{
+		$product = Product::where('barcode', $barcode)->first();
+		return $product;
+	}
+
 
 	public static function store($data){
 		Product::create($data);
