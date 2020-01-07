@@ -2,15 +2,15 @@
 
 namespace Modules\Product\Services;
 
-use Illuminate\Support\Facades\Storage;
 use Modules\Product\Imports\ProductsImport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
 
 class ImportService {
 
-    public function import()
+    public function import($path)
     {
-        Excel::import(new ProductsImport, 'token/produtos.xlsx');
+        Excel::import(new ProductsImport, $path);
     }
 
     public function images($path_images)

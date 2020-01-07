@@ -7,6 +7,17 @@ use Modules\Product\Entities\Product;
 class ProductRepository
 {
 
+	// LOAD
+	public static function load($attributes = ['*'], $relationship = [])
+	{
+		return Product::with($relationship)->get($attributes);
+	}
+
+	public static function loadById($id)
+	{
+		return Product::find($id);
+	}
+
 	public static function loadAll(){
 		return Product::all();
 	}
@@ -30,13 +41,15 @@ class ProductRepository
 	}
 
 
+	// SAVE
 	public static function store($data){
-		Product::create($data);
+		return Product::create($data);
 	}
 
 
 	public static function update(Product $product, $data){
 		$product->update($data);
+		return $product;
 	}
 
 

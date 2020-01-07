@@ -52,4 +52,9 @@ class ProductController extends Controller
         return back()->with('success', 'Produto deletado.');
     }
 
+    public function import(Request $request)
+    {
+        return view('product::import');
+    }
+
 }

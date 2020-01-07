@@ -1,0 +1,1 @@
+<a href="{{ route('products.import') }}" class="list-group-item list-group-item-accent-info list-group-item-divider list-group-item-action">Produtos</a>
