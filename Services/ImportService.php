@@ -10,7 +10,9 @@ class ImportService {
 
     public function import($path)
     {
-        Excel::import(new ProductsImport, $path);
+        if(Storage::exists($path)){
+            Excel::import(new ProductsImport, $path);
+        }
     }
 
     public function images($path_images)
@@ -26,3 +28,4 @@ class ImportService {
     }
 
 }
+

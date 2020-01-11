@@ -2,7 +2,7 @@
 	<td>
 		<img src="{{ url($product->image) }}" alt="..." class="img-thumbnail" style="height: 75px;">
 	</td>
-	<td class="align-middle">{{ $product->id }}</td>
+	<td class="align-middle">{{ $product->sku }}</td>
 	<td class="align-middle">{{ $product->description }}</td>
 	<td class="align-middle">
 		@currency($product->price)

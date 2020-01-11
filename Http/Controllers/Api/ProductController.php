@@ -13,7 +13,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        return ProductRepository::load(['id', 'sku', 'description', 'price', 'product_category_id'], ['product_category:id,description']);
+        return ProductRepository::load(['id','barcode', 'sku', 'description', 'price', 'product_category_id'], ['product_category:id,description']);
     }
 
     public function product(Request $request, Product $product)
