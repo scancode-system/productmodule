@@ -5,7 +5,9 @@ namespace Modules\Product\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Modules\Product\Entities\ProductCategory;
+use Modules\Product\Entities\Product;
 use Modules\Product\Events\ProductFillablesEvent;
+use Modules\Product\Events\ProductFamilyAliasEvent;
 
 use Rocky\Eloquent\HasDynamicRelation;
 
@@ -16,6 +18,7 @@ class Product extends Model
 	protected $fillable = ['id', 'sku', 'barcode', 'description', 'price', 'min_qty', 'discount_limit', 'multiple', 'product_category_id'];
 
 	protected $appends = ['image'];
+
 
 	public function __construct($attributes = array())
 	{
@@ -37,6 +40,32 @@ class Product extends Model
 	public function product_category()
 	{
 		return $this->belongsTo(ProductCategory::class);
+	}
+
+	
+
+	public function family()
+	{
+		return $this->hasMany(Product::class, 'sku', 'sku');
+	}
+
+	public function getFamilyAliasAttribute()
+	{
+		$alias = '';
+
+		$aliases = event(new ProductFamilyAliasEvent($this));
+		foreach ($aliases as $sub_alias) {
+			$alias.= $sub_alias.' - ';			
+		}
+		if($alias != '')
+		{
+			$alias = substr($alias, 0, (strlen($alias)-3));
+		} else 
+		{
+			$alias = $this->description;
+		}
+
+		return $alias;
 	}
 
 
