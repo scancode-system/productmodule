@@ -22,5 +22,9 @@
             "Modules\\Product\\": ""
         }
     },
-    "type": "laravel-module"
+    "type": "laravel-module",
+    "require": {
+        "scancode-system/dashboard-module":"^1.0",
+        "scancode-system/import-widget-module":"^1.0",
+    }
 }
