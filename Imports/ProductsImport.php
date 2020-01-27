@@ -84,6 +84,7 @@ class ProductsImport implements OnEachRow, WithHeadingRow, WithEvents
 
 	public static function beforeImport(BeforeImport $event)
 	{
+		SessionService::title('Product', 'import', 'Produtos'); 
 		$cells = $event->getDelegate()->getActiveSheet()->toArray();
 		$import = $event->getConcernable();
 		$import->data($cells);

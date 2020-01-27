@@ -73,9 +73,13 @@ class Product extends Model
 	{
 		$extensions = ['jpg'];
 		foreach ($extensions as $extension) {
-			if(Storage::disk('public')->exists('produtos/'.$this->sku.'.'.$extension)){
+			if(Storage::disk('public')->exists('produtos/'.$this->sku.'.'.$extension))
+			{
 				return 'storage/produtos/'.$this->sku.'.'.$extension; 
-			}	
+			} elseif(Storage::disk('public')->exists('produtos/'.$this->barcode.'.'.$extension))
+			{
+				return 'storage/produtos/'.$this->barcode.'.'.$extension;
+			}
 		}
 		return 'modules/dashboard/img/noimage.png';
 	}
