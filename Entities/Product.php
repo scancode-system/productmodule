@@ -62,7 +62,7 @@ class Product extends Model
 			$alias = substr($alias, 0, (strlen($alias)-3));
 		} else 
 		{
-			$alias = $this->description;
+			$alias = '';//$this->description;
 		}
 
 		return $alias;

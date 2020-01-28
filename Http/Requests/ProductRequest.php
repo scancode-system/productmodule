@@ -16,7 +16,7 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return array_merge([
-            'sku' => 'required|string|max:255|unique:products,sku'.(isset($this->id)?','.$this->id.',id':''),
+            'sku' => 'required|string|max:255',
             'barcode' => 'required|string|max:255|unique:products,barcode'.(isset($this->id)?','.$this->id.',id':''),
             'description' => 'required|string|max:255',
             'price' => 'required|numeric|min:0|regex:/^\d+(\.\d{1,2})?$/',

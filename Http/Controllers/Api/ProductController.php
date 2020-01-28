@@ -25,6 +25,7 @@ class ProductController extends Controller
         foreach ($product->family as $product_family) {
             $product_family->family_alias = $product_family->family_alias;     
         }
+        //$product->family_alias = $product->family_alias;
     	
         return $product;
     }
