@@ -71,15 +71,12 @@ class Product extends Model
 
 	public function getImageAttribute()
 	{
-		$extensions = ['jpg'];
-		foreach ($extensions as $extension) {
-			if(Storage::disk('public')->exists('produtos/'.$this->sku.'.'.$extension))
-			{
-				return 'storage/produtos/'.$this->sku.'.'.$extension; 
-			} elseif(Storage::disk('public')->exists('produtos/'.$this->barcode.'.'.$extension))
-			{
-				return 'storage/produtos/'.$this->barcode.'.'.$extension;
-			}
+		if(Storage::disk('public')->exists('produtos/'.$this->sku.'.jpg'))
+		{
+			return 'storage/produtos/'.$this->sku.'.jpg'; 
+		} elseif(Storage::disk('public')->exists('produtos/'.$this->barcode.'.jpg'))
+		{
+			return 'storage/produtos/'.$this->barcode.'.jpg';
 		}
 		return 'modules/dashboard/img/noimage.png';
 	}
