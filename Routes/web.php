@@ -18,6 +18,7 @@ Route::prefix('products')->middleware('auth')->group(function() {
 
 	Route::post('', 'ProductController@store')->name('products.store');
 	Route::post('{product}/image', 'ProductController@storeImage')->name('products.store.image');
+	Route::post('import/images', 'ProductController@importImages')->name('products.import.images');
 
 	Route::put('{product}', 'ProductController@update')->name('products.update');
 	

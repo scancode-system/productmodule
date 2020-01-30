@@ -57,4 +57,9 @@ class ProductController extends Controller
         return view('product::import');
     }
 
+    public function importImages(Request $request)
+    {
+        Storage::disk('public')->putFileAs('produtos', $request->file, $request->file->getClientOriginalName());
+    }
+
 }
