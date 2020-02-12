@@ -62,4 +62,16 @@ class ProductController extends Controller
         Storage::disk('public')->putFileAs('produtos', $request->file, $request->file->getClientOriginalName());
     }
 
+    public function select(Request $request, $text)
+    {
+        $products = Product::where('description', 'like', '%'.$text.'%')->orWhere('sku', 'like', '%'.$text.'%')->limit(30)->get();
+
+        $response = [];
+        foreach ($products as $product) {
+            array_push($response, ['id' => $product->id, 'text' => $product->description]);
+        }
+
+        return $response;
+    }
+
 }

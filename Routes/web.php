@@ -16,6 +16,8 @@ Route::prefix('products')->middleware('auth')->group(function() {
 	Route::get('{product}/edit', 'ProductController@edit')->name('products.edit');
 	Route::get('import', 'ProductController@import')->name('products.import');
 
+	Route::get('select/{text}', 'ProductController@select');
+
 	Route::post('', 'ProductController@store')->name('products.store');
 	Route::post('{product}/image', 'ProductController@storeImage')->name('products.store.image');
 	Route::post('import/images', 'ProductController@importImages')->name('products.import.images');
