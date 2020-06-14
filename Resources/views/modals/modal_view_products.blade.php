@@ -1,4 +1,4 @@
-@modal_view(['modal_id' => 'products_view_'.$product->id, 'edit_route' => 'products.edit', 'model_id' => $product->id])
+<x-modal_view :modal-id="'products_view_'.$product->id" edit-route="products.edit" :model_id="$product->id">
 
 @slot('title')
 Produto #{{ $product->id }}
@@ -41,4 +41,4 @@ Produto #{{ $product->id }}
 </div>
 @loader(['loader_path' => 'products.view'])
 
-@endmodal_view
+</x-modal_view>

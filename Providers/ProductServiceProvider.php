@@ -7,12 +7,21 @@ use Illuminate\Database\Eloquent\Factory;
 
 class ProductServiceProvider extends ServiceProvider
 {
+        /**
+     * @var string $moduleName
+     */
+        protected $moduleName = 'Product';
+
+    /**
+     * @var string $moduleNameLower
+     */
+    protected $moduleNameLower = 'product';
     /**
      * Boot the application events.
      *
      * @return void
      */
-    public function boot()
+    public function boot() 
     {
         $this->registerViews();
         $this->registerFactories();
@@ -37,7 +46,17 @@ class ProductServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
-        $viewPath = resource_path('views/modules/product');
+        $viewPath = resource_path('views/modules/' . $this->moduleNameLower);
+
+        $sourcePath = module_path($this->moduleName, 'Resources/views');
+
+        $this->publishes([
+            $sourcePath => $viewPath
+        ], ['views', $this->moduleNameLower . '-module-views']);
+
+        $this->loadViewsFrom(array_merge($this->getPublishableViewPaths(), [$sourcePath]), $this->moduleNameLower);
+
+        /*$viewPath = resource_path('views/modules/product');
 
         $sourcePath = __DIR__.'/../Resources/views';
 
@@ -47,7 +66,7 @@ class ProductServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
             return $path . '/modules/product';
-        }, \Config::get('view.paths')), [$sourcePath]), 'product');
+        }, \Config::get('view.paths')), [$sourcePath]), 'product');*/
     }
 
 
@@ -60,8 +79,12 @@ class ProductServiceProvider extends ServiceProvider
         public function registerFactories()
         {
             if (! app()->environment('production') && $this->app->runningInConsole()) {
-                app(Factory::class)->load(__DIR__ . '/../Database/factories');
+                app(Factory::class)->load(module_path($this->moduleName, 'Database/factories'));
             }
+
+            /*if (! app()->environment('production') && $this->app->runningInConsole()) {
+                app(Factory::class)->load(__DIR__ . '/../Database/factories');
+            }*/
         }
 
     /**
@@ -74,5 +97,17 @@ class ProductServiceProvider extends ServiceProvider
     public function provides()
     {
         return [];
+    }
+
+
+    private function getPublishableViewPaths(): array
+    {
+        $paths = [];
+        foreach (\Config::get('view.paths') as $path) {
+            if (is_dir($path . '/modules/' . $this->moduleNameLower)) {
+                $paths[] = $path . '/modules/' . $this->moduleNameLower;
+            }
+        }
+        return $paths;
     }
 }
